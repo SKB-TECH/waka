@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { CirclePlus } from "lucide-react";
+import { Sidebar } from "@/components/dashboard/sidebar";
+import { MobileNav } from "@/components/dashboard/mobile-nav";
+import { AccountsHeader } from "./accounts-header";
+
+export function OpenAccount(){return <div className="min-h-screen bg-[#f4f7f7] lg:pl-[210px] lg:bg-white"><Sidebar/><AccountsHeader/><main className="flex min-h-[calc(100vh-145px)] flex-col items-center justify-center px-6 pb-20 text-center"><Illustration/><h2 className="mt-8 text-[29px] font-bold lg:text-[36px]">Open a bank account</h2><p className="mt-3 max-w-sm text-sm leading-6 text-muted">Apply today and start using our banking app<br className="hidden lg:block"/> after documents confirmation</p><Link href="/accounts" className="mt-9 flex items-center gap-2 text-sm font-bold text-blue"><CirclePlus size={16}/>Open an account or deposit</Link></main><MobileNav/></div>}
+function Illustration(){return <div className="relative h-48 w-64"><div className="absolute bottom-3 left-4 h-px w-56 bg-slate-500"/><div className="absolute bottom-4 left-28 h-32 w-14 skew-x-[-5deg] rounded-t-full bg-slate-700"/><div className="absolute left-32 top-3 h-12 w-12 rounded-full bg-[#303045]"/><div className="absolute right-7 top-12 h-16 w-16 rounded-full bg-rose-400"/><div className="absolute left-10 top-14 flex items-end gap-1"><i className="h-5 w-2 bg-blue"/><i className="h-9 w-2 bg-blue"/><i className="h-14 w-2 bg-blue"/></div><div className="absolute bottom-0 right-2 h-20 w-20 rounded border border-slate-500 bg-white/70"><div className="mt-8 flex items-end justify-center gap-1"><i className="h-4 w-2 bg-blue"/><i className="h-8 w-2 bg-blue"/><i className="h-12 w-2 bg-blue"/></div></div></div>}

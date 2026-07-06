@@ -1,0 +1,11 @@
+"use client";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { chartData } from "./data";
+export function AssetChart({ dual = false, compact = false }: { dual?: boolean; compact?: boolean }) {
+  return <div className={compact ? "h-[190px]" : "h-[270px]"}><ResponsiveContainer width="100%" height="100%"><AreaChart data={chartData} margin={{ top: 20, right: 0, left: compact ? -32 : -18, bottom: 0 }}>
+    <defs><linearGradient id="blueFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#1266ff" stopOpacity=".18"/><stop offset="1" stopColor="#1266ff" stopOpacity="0"/></linearGradient><linearGradient id="greenFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#20d85a" stopOpacity=".15"/><stop offset="1" stopColor="#20d85a" stopOpacity="0"/></linearGradient></defs>
+    {!compact && <><CartesianGrid vertical={false} stroke="#e5e9ea" strokeDasharray="3 3"/><XAxis dataKey="m" interval={2} tickLine={false} axisLine={{ stroke: "#e5e9ea" }} tick={{ fontSize: 11, fill: "#636b70" }} dy={12}/><YAxis domain={[0, 30]} ticks={[0,10,20,30]} tickFormatter={v => v ? `${v/10}k` : "0"} tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "#7d8589" }}/></>}
+    <Tooltip contentStyle={{ border: 0, borderRadius: 4, boxShadow: "0 4px 20px #0002" }} formatter={(v) => [`$${Number(v) * 2840},50`, ""]}/>
+    <Area type="linear" dataKey="income" stroke="#1266ff" strokeWidth={2} fill="url(#blueFill)" dot={false}/>{dual && <Area type="linear" dataKey="expense" stroke="#20d85a" strokeWidth={2} fill="url(#greenFill)" dot={false}/>}</AreaChart></ResponsiveContainer></div>;
+}
+export function IncomeBars() { return <div className="h-[190px]"><ResponsiveContainer><BarChart data={chartData.filter((_,i)=>i%3===0)} margin={{top:10,right:0,left:-30,bottom:0}}><CartesianGrid vertical={false} strokeDasharray="3 3"/><XAxis dataKey="m" tickLine={false} axisLine={{stroke:'#e5e9ea'}} tick={{fontSize:11}} dy={12}/><YAxis ticks={[0,10,20,30]} tickFormatter={v=>v?`${v/10}k`:'0'} tickLine={false} axisLine={false} tick={{fontSize:11}}/><Bar dataKey="income" fill="#075cff" barSize={3} radius={3}/><Bar dataKey="expense" fill="#20da59" barSize={3} radius={3}/></BarChart></ResponsiveContainer></div> }

@@ -1,0 +1,5 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { AuthField, AuthShell, AuthTitle } from "./auth-shell";
+export function ForgotPassword(){const [sent,setSent]=useState(false);return <AuthShell quote="Technology innovation in financial services is accelerating rapidly."><AuthTitle title="Forgot password?" subtitle="Enter your email below and you will receive instructions to reset your password."/>{sent?<div className="rounded-xl bg-green-50 p-6 text-center"><b className="text-green-600">Recovery email sent</b><p className="mt-2 text-sm text-muted">Check your inbox and follow the secure link.</p><Link href="/login" className="mt-5 inline-block font-bold text-blue">Back to sign in</Link></div>:<form onSubmit={e=>{e.preventDefault();setSent(true)}}><AuthField label="Email" type="email" placeholder="you@example.com" defaultValue="catherine.shaw@gmail.com"/><button className="h-12 w-full rounded-lg bg-blue font-bold text-white">Start recovery</button></form>}<p className="mt-16 text-sm">You don&apos;t have an account? <Link href="/signup" className="font-bold text-blue">Create an account</Link></p></AuthShell>}

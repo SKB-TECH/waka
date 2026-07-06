@@ -1,0 +1,5 @@
+"use client";
+import Link from "next/link";
+import { QRCodeSVG } from "qrcode.react";
+import { AuthShell, AuthTitle } from "./auth-shell";
+export function QrLogin(){return <AuthShell quote="Powerful online banking built for small business."><AuthTitle title="Log in with QR code" subtitle="Scan this code with the mobile app to log in instantly"/><div className="mx-auto flex h-64 w-64 items-center justify-center rounded-lg border border-line"><QRCodeSVG value={JSON.stringify({type:'PAYSA_LOGIN',session:'AUTH-20260706-1309',expiresIn:300})} size={210} level="H" marginSize={2}/></div><div className="my-8 flex items-center gap-4 text-xs text-muted"><i className="h-px flex-1 bg-line"/>or<i className="h-px flex-1 bg-line"/></div><Link href="/login" className="flex h-12 items-center justify-center rounded-lg border border-line text-sm font-bold">▣ &nbsp; Log in with email or phone number</Link><p className="mt-16 text-sm">You don&apos;t have an account? <Link href="/signup" className="font-bold text-blue">Create an account</Link></p></AuthShell>}

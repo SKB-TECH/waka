@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #fff;
+  color: #090b0d;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.preference-select {
+  position: relative;
+  display: flex;
+  height: 36px;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  border: 1px solid #dfe4e5;
+  border-radius: 8px;
+  background: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+.preference-select select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+.navbar-select { flex: 0 0 auto; min-width: 72px; padding: 0 9px; }
+.theme-button {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  flex: 0 0 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe4e5;
+  border-radius: 8px;
+  background: white;
+}
+.admin-select {
+  max-width: 230px;
+  border: 1px solid #e1e6e7;
+  border-radius: 7px;
+  background: transparent;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+.dark body { background: #101416; color: #f5f7f7; }
+.dark .bg-white { background-color: #171c1f !important; }
+.dark .bg-\[\#f4f7f7\], .dark .bg-\[\#f2f5f5\], .dark .bg-\[\#f1f5f4\] { background-color: #111719 !important; }
+.dark .text-ink { color: #f5f7f7 !important; }
+.dark .border-line, .dark .border-\[\#dbe2e2\] { border-color: #30383c !important; }
+.dark input { background: transparent; color: #f5f7f7; }
+.dark .preference-select, .dark .theme-button { background: #20272a; border-color: #30383c; color: white; }
+.section-title {
+  margin: 22px 0 12px;
+  font-size: 18px;
+  font-weight: 700;
+}
+@media (max-width: 767px) {
+  body {
+    background: #f4f7f7;
+  }
+}
+
+/* Tablet: use the web application layout without forcing the phone UI. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    background: #f8faf9;
+  }
+  .reports-shell > aside {
+    display: flex;
+  }
+  main.pb-24.lg\:hidden,
+  nav.lg\:hidden {
+    display: none;
+  }
+  div.hidden.lg\:block {
+    display: block;
+  }
+  div.hidden.lg\:block > main {
+    max-width: 760px;
+    padding: 28px 24px 96px;
+  }
+  div.hidden.lg\:block > main > div:nth-child(2) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  div.hidden.lg\:block footer {
+    display: none;
+  }
+}
+
+/* Compact laptop: sidebar stays present, content cards stack until enough room. */
+@media (min-width: 1024px) and (max-width: 1179px) {
+  div.hidden.lg\:block > main {
+    max-width: 760px;
+    padding-inline: 24px;
+  }
+  div.hidden.lg\:block > main > div:nth-child(2) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Wide web screens: consume the available workspace instead of staying at 900px. */
+@media (min-width: 1180px) {
+  div.hidden.lg\:block > main {
+    width: calc(100% - 64px);
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  div.hidden.lg\:block > main > div:nth-child(2) {
+    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+  }
+
+  div.hidden.lg\:block footer {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1600px) {
+  div.hidden.lg\:block > main {
+    width: calc(100% - 96px);
+  }
+
+  div.hidden.lg\:block > main > div:nth-child(2) {
+    grid-template-columns: minmax(0, 1.8fr) minmax(360px, 0.9fr);
+  }
+}
+
+@media print {
+  @page { size: 80mm auto; margin: 4mm; }
+  body {
+    background: white !important;
+  }
+  aside,
+  header,
+  nav,
+  .screen-actions,
+  .print-action,
+  .success-heading,
+  .payment-success > h2,
+  .payment-success > p {
+    display: none !important;
+  }
+  .payment-success {
+    min-height: auto !important;
+    display: block !important;
+    padding: 0 !important;
+  }
+  .receipt {
+    display: block !important;
+    width: 100% !important;
+    max-width: 72mm !important;
+    margin: 0 auto !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
